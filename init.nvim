@@ -1,0 +1,92 @@
+syntax on
+filetype plugin on
+
+set comments=sl:/*,mb:*,elx:*/
+set ruler
+set incsearch
+set hls
+set scrolloff=3
+
+set showmatch
+set et
+set sw=4
+set ts=4
+set sts=4
+
+set nu
+
+set ai
+set nocompatible
+set si
+set backspace=start,indent,eol
+set fencs=utf-8,euc-kr,cp949
+set enc=utf-8
+
+set hi=1000
+
+set ru
+
+set noet
+
+set magic
+
+set sol
+set scs
+
+set smartindent
+set cindent
+set autoindent
+set vb
+
+set expandtab
+
+set cc=80
+set autoread
+
+if 0 | endif
+
+set nocompatible
+filetype off
+
+call plug#begin('~/.config/nvim/plugged/')
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-clang'
+Plug 'zchee/deoplete-jedi'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/taglist.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'bitc/vim-hdevtools'
+Plug 'mattn/emmet-vim'
+Plug 'jvoorhis/coq.vim'
+"Plug 'let-def/vimbufsync'
+Plug 'kamwitsta/nordisk'
+Plug 'majutsushi/tagbar'
+call plug#end()
+filetype plugin indent on
+
+colorscheme nordisk
+set termguicolors
+
+let g:completor_python_binary = '/usr/bin/python'
+let g:completor_clang_binary = '/usr/bin/clang++'
+
+au BufNewFile,BufRead *.cpp set syntax=cpp11
+au FileType haskell set ts=2 sts=2 sw=2
+au FileType coq set ts=2 sts=2 sw=2
+au FileType ruby set ts=2 sts=2 sw=2
+au FileType json set ts=2 sts=2 sw=2
+au FileType javascript set ts=2 sts=2 sw=2
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#clang#libclang_path = "/usr/lib/llvm-3.8/lib/libclang.so.1"
+let g:deoplete#sources#clang#clang_header = "/usr/lib/clang"
+
+set list
+set listchars=tab:>-,trail:-
+set tags=~/mathpresso-ocr/.tags
+
+nmap <F8> :TagbarToggle<CR>
